@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Tower_base_stats" load_steps=2 format=3 uid="uid://bunajfvlmlj38"]
+
+[ext_resource type="Script" path="res://objects/towers/tower_base_stats.gd" id="1_awkqb"]
+
+[resource]
+script = ExtResource("1_awkqb")
+cost = 100
+radar_range = 6.0
+fire_rate = 1.0
+aim_time = 1.0
+damage = 1
+size = 64

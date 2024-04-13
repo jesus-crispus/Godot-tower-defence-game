@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6nuv32wlfaoi"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_cnmye"]
+[ext_resource type="PackedScene" uid="uid://cjikln40op8au" path="res://tile_map.tscn" id="1_ktbwb"]
+[ext_resource type="Resource" uid="uid://bunajfvlmlj38" path="res://objects/towers/tower 1/other resources/tower_1_stats.tres" id="5_jq6id"]
+[ext_resource type="Texture2D" uid="uid://b8oosejb0lltw" path="res://tower art/towerDefense_tile249.png" id="6_inl2i"]
+[ext_resource type="Script" path="res://Button.gd" id="7_0kext"]
+
+[sub_resource type="Curve2D" id="Curve2D_q31ff"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 192, 192, 0, 0, 0, 0, 251, 252, 0, 0, 0, 0, 312, 296, 0, 0, 0, 0, 344, 355, 0, 0, 0, 0, 357, 498, 0, 0, 0, 0, 351, 798, 0, 0, 0, 0, 274, 888, 0, 0, 0, 0, 292, 1010, 0, 0, 0, 0, 404, 1064, 0, 0, 0, 0, 488, 1059, 0, 0, 0, 0, 531, 1020, 0, 0, 0, 0, 544, 574, 0, 0, 0, 0, 550, 516, 0, 0, 0, 0, 579, 495, 0, 0, 0, 0, 629, 480, 0, 0, 0, 0, 1358, 482, 0, 0, 0, 0, 1408, 514, 0, 0, 0, 0, 1436, 586, 0, 0, 0, 0, 1450, 685, 0, 0, 0, 0, 1533, 766, 0, 0, 0, 0, 1570, 842, 0, 0, 0, 0, 1692, 867, 0, 0, 0, 0, 1763, 918, 0, 0, 0, 0, 1806, 974, 0, 0, 0, 0, 2269, 990)
+}
+point_count = 25
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_cnmye")
+
+[node name="TileMap" parent="." instance=ExtResource("1_ktbwb")]
+position = Vector2(64, 64)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_q31ff")
+
+[node name="spawn timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Button" type="Button" parent="."]
+offset_left = 96.0
+offset_top = 1184.0
+offset_right = 224.0
+offset_bottom = 1312.0
+text = "100cr"
+icon = ExtResource("6_inl2i")
+script = ExtResource("7_0kext")
+tower_base_stats = ExtResource("5_jq6id")
+
+[node name="credits_label" type="RichTextLabel" parent="."]
+offset_left = 96.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 160.0
+theme_override_font_sizes/normal_font_size = 36
+text = "credots 1000"
+
+[connection signal="timeout" from="spawn timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
+[connection signal="purchase" from="Button" to="." method="_on_button_purchase"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://vyt04mje2a5r"]
+
+[ext_resource type="Script" path="res://objects/radar_node.gd" id="1_3fljr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wfi5"]
+radius = 128.0
+
+[node name="radar_node" type="Area2D"]
+script = ExtResource("1_3fljr")
+
+[node name="radar_shape" type="CollisionShape2D" parent="."]
+visibility_layer = 524289
+shape = SubResource("CircleShape2D_5wfi5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

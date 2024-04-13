@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Level_resourse" load_steps=2 format=3 uid="uid://bop1n53e3cacp"]
+
+[ext_resource type="Script" path="res://levels/general level scripts/level resourse template.gd" id="1_sle8n"]
+
+[resource]
+script = ExtResource("1_sle8n")
+money = 100
+level_waves = 7
+curent_level_wave = 0
+money_maneger_reference = ""
+enemy_maneger_reference = ""

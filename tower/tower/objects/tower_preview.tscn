@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cikjaoljtxfoj"]
+
+[ext_resource type="Script" path="res://objects/tower_preview.gd" id="1_7ao2y"]
+[ext_resource type="Texture2D" uid="uid://b8oosejb0lltw" path="res://tower art/towerDefense_tile249.png" id="2_bv8e2"]
+[ext_resource type="Resource" uid="uid://bunajfvlmlj38" path="res://objects/towers/tower 1/other resources/tower_1_stats.tres" id="2_tunut"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jeeea"]
+radius = 31.0
+
+[node name="tower_preview" type="Node2D"]
+script = ExtResource("1_7ao2y")
+tower_base_stats = ExtResource("2_tunut")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+z_index = 1
+texture = ExtResource("2_bv8e2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jeeea")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
