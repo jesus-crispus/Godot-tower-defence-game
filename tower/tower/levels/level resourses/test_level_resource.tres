@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_sle8n")
-money = 100
+credits = 100
 level_waves = 7
 curent_level_wave = 0
 money_maneger_reference = ""

@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://di665p3dxwouq"]
+[gd_scene load_steps=11 format=3 uid="uid://di665p3dxwouq"]
 
 [ext_resource type="Script" path="res://levels/general level scripts/level.gd" id="1_d7imc"]
 [ext_resource type="Resource" uid="uid://bop1n53e3cacp" path="res://levels/level resourses/test_level_resource.tres" id="2_kprov"]
 [ext_resource type="Script" path="res://levels/general level scripts/money manager.gd" id="3_83um7"]
-[ext_resource type="Script" path="res://levels/general level scripts/level ui.gd" id="4_m4iax"]
 [ext_resource type="Texture2D" uid="uid://b8oosejb0lltw" path="res://objects/towers/tower 1/sprites/towerDefense_tile249.png" id="4_urium"]
 [ext_resource type="Script" path="res://Button.gd" id="5_mwt7m"]
 [ext_resource type="Script" path="res://levels/general level scripts/level maneger.gd" id="7_qqoxf"]
@@ -24,12 +23,11 @@ level_resourse = ExtResource("2_kprov")
 [node name="money manager" type="Node" parent="." groups=["wants level resource"]]
 script = ExtResource("3_83um7")
 
-[node name="level ui" type="Control" parent="." groups=["wants level resource"]]
+[node name="level ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("4_m4iax")
 
 [node name="Button" type="Button" parent="level ui"]
 layout_mode = 0
@@ -57,7 +55,7 @@ script = ExtResource("7_qqoxf")
 z_index = -1
 position = Vector2(64, 64)
 
-[node name="enemy maneger" type="Node" parent="level maneger" groups=["wants level resource"]]
+[node name="enemy maneger" type="Node" parent="level maneger"]
 script = ExtResource("9_24thp")
 
 [node name="spawn timer" type="Timer" parent="level maneger/enemy maneger"]
@@ -71,4 +69,3 @@ script = ExtResource("9_iqj7p")
 
 [connection signal="button_up" from="level ui/Button" to="level ui/Button" method="_on_button_up"]
 [connection signal="tower_1_button_pressed" from="level ui/Button" to="level maneger/tower maneger" method="_on_tower_button_pressed"]
-[connection signal="timeout" from="level maneger/enemy maneger/spawn timer" to="level maneger/enemy maneger" method="_on_spawn_timer_timeout"]

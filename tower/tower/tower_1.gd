@@ -6,7 +6,7 @@ var component_list = []
 
 signal fire_is_allowed_by_tower
 var enemy_detected = false
-@export var tower_base_stats: Resource
+@export var Tower_data: Resource
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +36,11 @@ func is_fire_allowed():
 	if enemy_detected == true:
 		fire_is_allowed_by_tower.emit()
 
-
+#func _give_data_to_children():
+#	var nodes_that_wants_level_resource
+#	nodes_that_wants_level_resource = get_tree().get_nodes_in_group("wants level resource")
+#	for node in nodes_that_wants_level_resource:
+#		node.Tower_data = Tower_data
 
 
 #for lop checing for component
@@ -47,3 +51,7 @@ func is_fire_allowed():
 
 
 
+
+
+func _on_request_tower_data(reciver):
+	reciver.Tower_data = Tower_data

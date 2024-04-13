@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dg8hmfn6mfh2d"]
+
+[ext_resource type="Script" path="res://tower_1.gd" id="1_dux7y"]
+[ext_resource type="Texture2D" uid="uid://b8oosejb0lltw" path="res://objects/towers/tower 1/sprites/towerDefense_tile249.png" id="3_f3w7s"]
+[ext_resource type="Script" path="res://objects/towers/tower 1/code/aimpoint.gd" id="4_1p31g"]
+[ext_resource type="Script" path="res://objects/Area2D.gd" id="5_m7beq"]
+[ext_resource type="PackedScene" uid="uid://vyt04mje2a5r" path="res://objects/towers/tower 1/Scenes/radar_node.tscn" id="6_xau3p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjja5"]
+radius = 31.0
+
+[node name="tower_node" type="Node2D"]
+rotation = -1.5708
+script = ExtResource("1_dux7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("3_f3w7s")
+
+[node name="aimpoint" type="Node2D" parent="."]
+position = Vector2(23, 8.32598e-05)
+script = ExtResource("4_1p31g")
+
+[node name="coldown" type="Timer" parent="aimpoint"]
+wait_time = 1.232
+one_shot = true
+
+[node name="tower_ body" type="Area2D" parent="."]
+script = ExtResource("5_m7beq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tower_ body"]
+shape = SubResource("CircleShape2D_jjja5")
+
+[node name="radar_node" parent="." instance=ExtResource("6_xau3p")]
+
+[connection signal="fire_is_allowed_by_tower" from="." to="aimpoint" method="_on_tower_node_fire_is_allowed_by_tower"]
+[connection signal="enemy_detected" from="radar_node" to="." method="_on_radar_node_enemy_detected"]
+[connection signal="no_enemy_detected" from="radar_node" to="." method="_on_radar_node_no_enemy_detected"]
+[connection signal="request_Tower_data" from="radar_node" to="." method="_on_request_tower_data"]

@@ -15,10 +15,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+#func _process(delta):
 	#print(self)
-	if preview_is_active:
-		_credits_reference.emit(credits)
+	#if preview_is_active:
+	#	_credits_reference.emit(credits)
 
 
 

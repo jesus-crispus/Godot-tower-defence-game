@@ -1,14 +1,20 @@
 extends Node2D
 
-@onready var projectile = preload("res://objects/projectile.tscn")
+
+var Tower_data: Resource
+signal request_Tower_data(reciver)
+
+var projectile
 @onready var coldown = $coldown
-@onready var radar_node = preload("res://objects/radar_node.tscn")
+
 var projectile_instance 
 func _ready():
-	connect_to_parent()
+	request_Tower_data.emit(self)
+	projectile = load(Tower_data.tower_projectile_path)
+	
+	coldown.wait_time = Tower_data.fire_rate
 
-func connect_to_parent():
-	get_parent().component_list.append(self)
+
 
 func _fire():
 	projectile_instance = projectile.instantiate()
@@ -25,8 +31,7 @@ func _fire():
 
 
 
-func _on_radar_node_seize_fire():
-	pass # Replace with function body.
+
 
 func AimPoint():
 	pass

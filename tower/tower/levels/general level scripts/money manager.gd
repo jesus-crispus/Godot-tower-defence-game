@@ -11,5 +11,5 @@ func money_changed():
 	
 
 func _process(delta):
-	if level_resourse != null:
+	if level_resourse == null:
 		level_resourse.money_maneger_reference = str(self)

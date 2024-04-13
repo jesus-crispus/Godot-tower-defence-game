@@ -27,14 +27,18 @@ func _ready():
 	#level_resourse.enemy_maneger_reference = str(enemy_manager_id)
 #func find
 
-
+func _on_request_level_resourse(reciver):
+	reciver.level_resourse = level_resourse
 
 func _give_data_to_children():
-	var nodes_that_wants_level_Resource
-	nodes_that_wants_level_Resource = get_tree().get_nodes_in_group("wants level id")
-	for enemy in nodes_that_wants_level_Resource:
-		enemy.level_resourse = level_resourse
+	var nodes_that_wants_level_resource
+	nodes_that_wants_level_resource = get_tree().get_nodes_in_group("wants level resource")
+	for node in nodes_that_wants_level_resource:
+		node.level_resourse = level_resourse
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
+
+

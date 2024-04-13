@@ -1,11 +1,14 @@
-extends Node
+extends Control
+
+
+@onready  var credits_label = $credits_label
+var level_resourse: Resource
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	credits_label.text = "credits: " + str(level_resourse.credits)

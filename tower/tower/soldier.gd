@@ -1,8 +1,8 @@
 extends PathFollow2D
 
 var speed = 100
-var value = 10
-var main
+var value = 5
+var level_resourse : Resource
 
 
 
@@ -10,7 +10,7 @@ var main
 signal _unit_defeat(value)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(main)
+	pass
 #	_unit_defeat.connect(main._on_soldier__unit_defeat(value))
 
 
@@ -33,5 +33,5 @@ func _on_area_2d_area_entered(area):
 
 
 func soldier_death():
-	main._on_soldier_unit_defeat(value)
+	level_resourse.credits += value
 	queue_free()

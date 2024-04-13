@@ -6,20 +6,28 @@ var list_of_enemies = []
 #var radar_radius
 signal enemy_detected()
 signal no_enemy_detected()
-@export var tower_base_stats: Resource = load("res://objects/towers/tower 1/other resources/tower_1_stats.tres")
-signal purchase(tower_cost)
+
+#tower data resource
+var Tower_data: Resource
+signal request_Tower_data(reciver)
+
+
 
 func _ready():
-	connect_to_parent()
+	request_Tower_data.emit(self)
 	
 	$radar_shape.shape.radius = return_radar_radius()
 
-func _get_tower_base_stats():
-	pass
+
+
+
+
+
+
 
 func return_radar_radius():
 	var Radius
-	Radius = (tower_base_stats.radar_range * (tower_base_stats.size/2))
+	Radius = (Tower_data.radar_range * (Tower_data.size/2))
 	return  Radius
 
 

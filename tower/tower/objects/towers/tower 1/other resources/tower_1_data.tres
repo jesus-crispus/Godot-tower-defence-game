@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tower_data" load_steps=2 format=3 uid="uid://bunajfvlmlj38"]
+
+[ext_resource type="Script" path="res://objects/towers/tower_data.gd" id="1_gcxqn"]
+
+[resource]
+script = ExtResource("1_gcxqn")
+Name = "Tower 1"
+tower_path = "res://objects/towers/tower 1/Scenes/tower_base.tscn"
+tower_prevew_path = "res://objects/towers/tower 1/Scenes/tower_preview.tscn"
+tower_projectile_path = "res://objects/towers/tower 1/Scenes/projectile.tscn"
+cost = 100
+radar_range = 6.0
+fire_rate = 1.0
+aim_time = 1.0
+damage = 1
+size = 64
