@@ -5,6 +5,7 @@ var can_place = false
 var area_blocked = false
 var Tower_data: Resource
 var level_resourse: Resource
+@onready var Sprite = $Sprite
 signal request_level_resourse(reciver)
 
 
@@ -26,19 +27,24 @@ func check_if_can_place():
 	if check_if_position_is_blocked() == false:
 		if check_if_can_afford() == true:
 			can_place = true
-			$Sprite2D.modulate = Color(0,0,0)
+			Sprite.modulate = Color(1,1,1)
 			
-		else: change_color_to_red()
-	else: change_color_to_red()
+		else: 
+			change_color_to_red()
+			can_place = false
+	else: 
+		change_color_to_red()
+		can_place = false
 
 func change_color_to_red():
-	$Sprite2D.modulate = Color(1,0,0)
+	Sprite.modulate = Color(1,0,0)
 
 
 func check_if_position_is_blocked():
-	if area_blocked == true:
+	if $Area2D.has_overlapping_bodies() == true:
+		return true
+	else:
 		return false
-	
 
 
 func check_if_can_afford():
@@ -59,7 +65,7 @@ func place_tower():
 func purchase_tower():
 	
 	level_resourse.credits -= Tower_data.cost
-	print("purchased",Tower_data.Name,"for",Tower_data.cost)
+	print("purchased ",Tower_data.Name," for ",Tower_data.cost)
 
 func end_preview():
 	
@@ -70,23 +76,9 @@ func end_preview():
 
 
 
-func _on_area_2d_body_entered(body):
-	area_blocked = false
-
-func _on_area_2d_body_exited(body):
-	area_blocked = true
 
 
 
-
-func _on_area_2d_area_entered(area):
-	if area.has_method("tower_body"):
-		area_blocked = false
-
-
-func _on_area_2d_area_exited(area):
-	if area.has_method("tower_body"):
-			can_place = true
 
 
 func can_place_tower():

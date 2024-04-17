@@ -1,19 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg8hmfn6mfh2d"]
+[gd_scene load_steps=12 format=3 uid="uid://dg8hmfn6mfh2d"]
 
 [ext_resource type="Script" path="res://objects/towers/tower 1/Scenes/tower_base.gd" id="1_5rbq1"]
 [ext_resource type="Script" path="res://objects/towers/tower 1/code/tower_1.gd" id="1_dux7y"]
 [ext_resource type="Resource" uid="uid://bunajfvlmlj38" path="res://objects/towers/tower 1/other resources/tower_1_data.tres" id="2_5a7uv"]
 [ext_resource type="Texture2D" uid="uid://cw2aq2wlle0nx" path="res://objects/towers/tower 1/sprites/SPACE SHIP 1.png" id="3_1eutx"]
+[ext_resource type="Script" path="res://objects/towers/tower 1/code/aimpoint.gd" id="4_1p31g"]
 [ext_resource type="Script" path="res://objects/towers/tower 1/code/radar.gd" id="6_id6qc"]
+[ext_resource type="PackedScene" uid="uid://vyt04mje2a5r" path="res://objects/towers/tower 1/Scenes/radar_node.tscn" id="6_xau3p"]
 [ext_resource type="Script" path="res://objects/towers/tower 1/code/FireControl.gd" id="7_m6ewb"]
 [ext_resource type="Texture2D" uid="uid://q4nnpbf7f8xj" path="res://tower art/tower base-Sheet.png" id="8_0cntp"]
-[ext_resource type="Script" path="res://objects/towers/tower 1/code/wepons.gd" id="8_tdbyt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jjja5"]
 radius = 19.23
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtl3s"]
-radius = 124.0
 
 [node name="tower_base" type="Node2D"]
 script = ExtResource("1_5rbq1")
@@ -25,6 +25,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tower_ body"]
 shape = SubResource("CircleShape2D_jjja5")
 
+[node name="radar_node" parent="." instance=ExtResource("6_xau3p")]
+
 [node name="TowerBase-sheet" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("8_0cntp")
@@ -34,15 +36,7 @@ hframes = 3
 script = ExtResource("1_dux7y")
 Tower_data = ExtResource("2_5a7uv")
 
-[node name="Sprite2D" type="Sprite2D" parent="turret"]
-z_index = 1
-rotation = -1.5708
-scale = Vector2(2, 2)
-texture = ExtResource("3_1eutx")
-offset = Vector2(0, 7.5)
-hframes = 7
-
-[node name="FireControl" type="Node2D" parent="turret"]
+[node name="FireControl" type="Node" parent="turret"]
 script = ExtResource("7_m6ewb")
 
 [node name="radar" type="Area2D" parent="turret/FireControl"]
@@ -53,10 +47,30 @@ script = ExtResource("6_id6qc")
 [node name="radar_collison" type="CollisionShape2D" parent="turret/FireControl/radar"]
 shape = SubResource("CircleShape2D_gtl3s")
 
-[node name="wepons" type="Node2D" parent="turret/FireControl"]
-script = ExtResource("8_tdbyt")
+[node name="Sprite2D" type="Sprite2D" parent="turret"]
+z_index = 1
+rotation = -1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("3_1eutx")
+offset = Vector2(0, 7.5)
+hframes = 7
 
-[connection signal="start_fiering_sequence" from="turret/FireControl" to="turret/FireControl/wepons" method="start_fiering_sequence_started"]
+[node name="aimpoint" type="Node2D" parent="turret"]
+position = Vector2(23, 8.32598e-05)
+script = ExtResource("4_1p31g")
+
+[node name="coldown" type="Timer" parent="turret/aimpoint"]
+wait_time = 1.232
+one_shot = true
+
+[node name="magazine_reload_timer" type="Timer" parent="turret/aimpoint"]
+one_shot = true
+
+[connection signal="enemy_detected" from="radar_node" to="." method="_on_radar_node_enemy_detected"]
+[connection signal="no_enemy_detected" from="radar_node" to="." method="_on_radar_node_no_enemy_detected"]
 [connection signal="area_entered" from="turret/FireControl/radar" to="turret/FireControl" method="_on_radar_area_entered"]
 [connection signal="area_exited" from="turret/FireControl/radar" to="turret/FireControl" method="_on_radar_area_exited"]
 [connection signal="request_Tower_data" from="turret/FireControl/radar" to="turret" method="_on_request_tower_data"]
+[connection signal="request_Tower_data" from="turret/aimpoint" to="." method="_on_request_tower_data"]
+[connection signal="timeout" from="turret/aimpoint/coldown" to="turret/aimpoint" method="_on_coldown_timeout"]
+[connection signal="timeout" from="turret/aimpoint/magazine_reload_timer" to="turret/aimpoint" method="_on_magazine_reload_timer_timeout"]

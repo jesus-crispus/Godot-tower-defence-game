@@ -3,11 +3,11 @@ extends PathFollow2D
 var speed = 100
 var value = 5
 var level_resourse : Resource
+var spawn_number
 
 
 
 
-signal _unit_defeat(value)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -17,7 +17,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	progress += speed * delta
-	if progress_ratio >= 1:
+	if progress_ratio >= 0.99:
 		queue_free()
 	
 

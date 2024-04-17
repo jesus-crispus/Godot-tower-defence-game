@@ -18,6 +18,7 @@ func _process(delta):
 func _on_spawn_timer_timeout():
 	var instance = enemy.instantiate()
 	instance.level_resourse = level_resourse
+	instance.spawn_number  = enemies_spawned
 	$Path2D.add_child(instance)
 	$"spawn timer".start()
 	enemies_spawned += 1

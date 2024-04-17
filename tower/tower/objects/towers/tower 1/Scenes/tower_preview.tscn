@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cikjaoljtxfoj"]
+[gd_scene load_steps=5 format=3 uid="uid://cikjaoljtxfoj"]
 
 [ext_resource type="Script" path="res://objects/towers/tower 1/code/tower_preview.gd" id="1_3uknm"]
-[ext_resource type="Texture2D" uid="uid://b8oosejb0lltw" path="res://objects/towers/tower 1/sprites/towerDefense_tile249.png" id="3_6qobb"]
+[ext_resource type="Texture2D" uid="uid://cw2aq2wlle0nx" path="res://objects/towers/tower 1/sprites/SPACE SHIP 1.png" id="2_we1dw"]
+[ext_resource type="Texture2D" uid="uid://q4nnpbf7f8xj" path="res://tower art/tower base-Sheet.png" id="3_dv1wf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jeeea"]
 radius = 31.0
@@ -9,17 +10,23 @@ radius = 31.0
 [node name="tower_preview" type="Node2D"]
 script = ExtResource("1_3uknm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.392157)
+[node name="Sprite" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite"]
+z_index = 2
+position = Vector2(0, 7.5)
+texture = ExtResource("2_we1dw")
+hframes = 7
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite"]
 z_index = 1
-texture = ExtResource("3_6qobb")
+texture = ExtResource("3_dv1wf")
+hframes = 3
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_jeeea")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

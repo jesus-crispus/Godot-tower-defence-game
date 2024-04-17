@@ -22,9 +22,6 @@ func _ready():
 
 
 
-
-
-
 func return_radar_radius():
 	var Radius
 	Radius = (Tower_data.radar_range * (Tower_data.size/2))
@@ -41,6 +38,9 @@ func _process(delta):
 	
 	if list_of_enemies.is_empty():
 		no_enemy_detected.emit()
+	
+	print(get_overlapping_areas())
+	print(list_of_enemies)
 
 
 

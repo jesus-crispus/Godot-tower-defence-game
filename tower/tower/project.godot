@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=2304
-window/size/viewport_height=1296
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [file_customization]
 
@@ -28,6 +28,15 @@ folder_colors={
 "res://objects/towers/tower 1/other resources/": "orange",
 "res://objects/towers/tower 1/sprites/": "blue"
 }
+
+[layer_names]
+
+2d_physics/layer_1="Ground"
+2d_physics/layer_2="Tower"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Radar physics layer"
+2d_physics/layer_5="Projectile"
+2d_physics/layer_6="placement bloking"
 
 [rendering]
 

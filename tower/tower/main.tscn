@@ -9,3 +9,6 @@ script = ExtResource("1_cnmye")
 [node name="game maneger" type="Node" parent="."]
 
 [node name="level test" parent="game maneger" instance=ExtResource("2_7ojip")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 544)

@@ -11,11 +11,11 @@
 [ext_resource type="Script" path="res://levels/general level scripts/enemy maneger.gd" id="9_24thp"]
 [ext_resource type="Script" path="res://levels/general level scripts/tower maneger.gd" id="9_iqj7p"]
 
-[sub_resource type="Curve2D" id="Curve2D_q31ff"]
+[sub_resource type="Curve2D" id="Curve2D_1xjsm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 192, 192, 0, 0, 0, 0, 251, 252, 0, 0, 0, 0, 312, 296, 0, 0, 0, 0, 344, 355, 0, 0, 0, 0, 357, 498, 0, 0, 0, 0, 351, 798, 0, 0, 0, 0, 274, 888, 0, 0, 0, 0, 292, 1010, 0, 0, 0, 0, 404, 1064, 0, 0, 0, 0, 488, 1059, 0, 0, 0, 0, 531, 1020, 0, 0, 0, 0, 544, 574, 0, 0, 0, 0, 550, 516, 0, 0, 0, 0, 579, 495, 0, 0, 0, 0, 629, 480, 0, 0, 0, 0, 1358, 482, 0, 0, 0, 0, 1408, 514, 0, 0, 0, 0, 1436, 586, 0, 0, 0, 0, 1450, 685, 0, 0, 0, 0, 1533, 766, 0, 0, 0, 0, 1570, 842, 0, 0, 0, 0, 1692, 867, 0, 0, 0, 0, 1763, 918, 0, 0, 0, 0, 1806, 974, 0, 0, 0, 0, 2269, 990)
+"points": PackedVector2Array(0, 0, 0, 0, 64, 160, -52.7973, 0, 52.7973, 0, 160, 160, -1.41421, -33.9411, 1.41421, 33.9411, 224, 224, -15.4422, -71.8658, 15.4422, 71.8658, 224, 672, 0, 0, 0, 0, 288, 736, -72.7567, 7.42416, 72.7567, -7.42416, 352, 736, 0, 0, 0, 0, 416, 672, -0.296966, 40.3874, 0.296966, -40.3874, 416, 288, -31.4784, 0, 31.4784, 0, 480, 224, -24.6482, -1.18787, 24.6482, 1.18787, 992, 224, -1.18787, -35.042, 1.18787, 35.042, 1056, 288, 10.7878, -18.2939, -10.7878, 18.2939, 1056, 352, 0, 0, 0, 0, 1056, 352, 73.0321, -100.268, -73.0321, 100.268, 864, 544, 1.85197, -20.3716, -1.85197, 20.3716, 800, 640, -1.28596, -36.8721, 1.28596, 36.8721, 800, 704, 0, 0, 0, 0, 864, 736, 0, 0, 0, 0, 1920, 736)
 }
-point_count = 25
+point_count = 18
 
 [node name="level test" type="Node2D"]
 script = ExtResource("1_d7imc")
@@ -33,20 +33,17 @@ script = ExtResource("4_m4iax")
 
 [node name="Button" type="Button" parent="level ui"]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 1184.0
-offset_right = 224.0
-offset_bottom = 1312.0
+offset_top = 960.0
+offset_right = 128.0
+offset_bottom = 1088.0
 text = "100cr"
 icon = ExtResource("4_urium")
 script = ExtResource("5_mwt7m")
 
 [node name="credits_label" type="RichTextLabel" parent="level ui"]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 64.0
-offset_right = 384.0
-offset_bottom = 160.0
+offset_right = 288.0
+offset_bottom = 96.0
 theme_override_font_sizes/normal_font_size = 36
 text = "credots 1000"
 
@@ -55,7 +52,6 @@ script = ExtResource("7_qqoxf")
 
 [node name="TileMap" parent="level maneger" instance=ExtResource("8_bow6l")]
 z_index = -1
-position = Vector2(64, 64)
 
 [node name="enemy maneger" type="Node" parent="level maneger" groups=["wants level resource"]]
 script = ExtResource("9_24thp")
@@ -64,7 +60,7 @@ script = ExtResource("9_24thp")
 wait_time = 0.5
 
 [node name="Path2D" type="Path2D" parent="level maneger/enemy maneger"]
-curve = SubResource("Curve2D_q31ff")
+curve = SubResource("Curve2D_1xjsm")
 
 [node name="tower maneger" type="Node" parent="level maneger" groups=["wants level resource"]]
 script = ExtResource("9_iqj7p")

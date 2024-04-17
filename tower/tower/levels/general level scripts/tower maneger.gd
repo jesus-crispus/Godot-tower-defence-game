@@ -20,6 +20,6 @@ func _on_tower_button_pressed(tower_resource):
 func spawn_tower_preview(tower_preview):
 	var instance = tower_preview.instantiate()
 	instance.level_resourse = level_resourse
-	#instance.Tower_data = Tower_data
-	add_child(instance)
 	instance.Tower_data = Tower_data
+	add_child(instance)
+	#instance.Tower_data = Tower_data
