@@ -13,9 +13,9 @@ func _ready():
 func _process(delta):
 	position += (Vector2.RIGHT.rotated(rotation) * SPEED) * delta
 
-
-func _on_area_2d_area_entered(area):
-	if area.get_parent().has_method("Enemy"):
+func _on_area_2d_body_entered(body):
+	if body.has_method("soldier_death"):
+		body.soldier_death()
 		queue_free()
 
 
@@ -24,3 +24,7 @@ func _on_life_timer_timeout():
 
 func projectile():
 	pass
+
+
+
+	pass # Replace with function body.

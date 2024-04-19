@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://q4nnpbf7f8xj" path="res://tower art/tower base-Sheet.png" id="3_dv1wf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jeeea"]
-radius = 31.0
+radius = 19.0263
 
 [node name="tower_preview" type="Node2D"]
+z_index = 10
 script = ExtResource("1_3uknm")
 
 [node name="Sprite" type="Node2D" parent="."]

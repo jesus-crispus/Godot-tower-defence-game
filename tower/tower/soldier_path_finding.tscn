@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b22tuf1pgokon"]
+
+[ext_resource type="Script" path="res://soldier_path_finding.gd" id="1_jku8w"]
+[ext_resource type="Texture2D" uid="uid://bu8qwvm143r05" path="res://Enemy/towerDefense_tile245.png" id="2_gqwlc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpujh"]
+radius = 128.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3q8p"]
+
+[node name="Soldier Path Finding" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 5
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_jku8w")
+
+[node name="AggroRange" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="AggroRange"]
+texture_filter = 1
+texture = ExtResource("2_gqwlc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+shape = SubResource("CircleShape2D_hpujh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 3.14159
+shape = SubResource("CircleShape2D_s3q8p")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+avoidance_layers = 0
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

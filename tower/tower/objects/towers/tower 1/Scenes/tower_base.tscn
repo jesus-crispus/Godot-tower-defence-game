@@ -15,11 +15,11 @@ radius = 19.23
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtl3s"]
 radius = 124.0
 
-[node name="tower_base" type="Node2D"]
+[node name="tower_base" type="Node2D" groups=["tower"]]
 script = ExtResource("1_5rbq1")
 
 [node name="tower_ body" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 34
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tower_ body"]
@@ -46,7 +46,7 @@ hframes = 7
 script = ExtResource("7_m6ewb")
 
 [node name="radar" type="Area2D" parent="turret/FireControl"]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 4
 script = ExtResource("6_id6qc")
 
@@ -59,4 +59,6 @@ script = ExtResource("8_tdbyt")
 [connection signal="start_fiering_sequence" from="turret/FireControl" to="turret/FireControl/wepons" method="start_fiering_sequence_started"]
 [connection signal="area_entered" from="turret/FireControl/radar" to="turret/FireControl" method="_on_radar_area_entered"]
 [connection signal="area_exited" from="turret/FireControl/radar" to="turret/FireControl" method="_on_radar_area_exited"]
+[connection signal="body_entered" from="turret/FireControl/radar" to="turret/FireControl" method="_on_radar_body_entered"]
+[connection signal="body_exited" from="turret/FireControl/radar" to="turret/FireControl" method="_on_radar_body_exited"]
 [connection signal="request_Tower_data" from="turret/FireControl/radar" to="turret" method="_on_request_tower_data"]

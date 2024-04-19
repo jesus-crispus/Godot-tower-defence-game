@@ -15,7 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if current_target != null:
-		get_parent().look_at(current_target.position)
+		get_parent().look_at(current_target.global_position)
 		start_fiering_sequence.emit()
 
 
@@ -33,8 +33,8 @@ func call_delayed(callable : Callable, delay : float):
 	get_tree().create_timer(delay, false).connect("timeout",callable)
 
 
-func _on_radar_area_entered(area):
-	var instance = area.get_parent()
+func _on_radar_body_entered(body):
+	var instance = body#.get_parent()
 	if instance.is_in_group("Enemy"):
 		list_of_enemies.append(instance)
 		if current_target == null:
@@ -44,8 +44,8 @@ func _on_radar_area_entered(area):
 	
 	
 
-func _on_radar_area_exited(area):
-	var  instance = area.get_parent()
+func _on_radar_body_exited(body):
+	var  instance = body#.get_parent()
 	if instance.is_in_group("Enemy"):
 		list_of_enemies.erase(instance)
 		if instance == current_target:
@@ -66,4 +66,9 @@ func is_new_ememy_a_better_target(old, new):
 	if new.spawn_number <  old.spawn_number:
 		
 		return true
+
+
+
+
+
 

@@ -24,7 +24,7 @@ func _process(delta):
 
 
 func check_if_can_place():
-	if check_if_position_is_blocked() == false:
+	if check_if_position_is_placeable() == true:
 		if check_if_can_afford() == true:
 			can_place = true
 			Sprite.modulate = Color(1,1,1)
@@ -40,8 +40,8 @@ func change_color_to_red():
 	Sprite.modulate = Color(1,0,0)
 
 
-func check_if_position_is_blocked():
-	if $Area2D.has_overlapping_bodies() == true:
+func check_if_position_is_placeable():
+	if $Area2D.has_overlapping_bodies() == false and $Area2D.has_overlapping_areas() == false:
 		return true
 	else:
 		return false

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://mk14dqle45wp"]
+
+[ext_resource type="Script" path="res://gameover.gd" id="1_sl78e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o60gi"]
+font_size = 64
+
+[node name="gameover" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_sl78e")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 987.0
+offset_top = 383.0
+offset_right = 1371.0
+offset_bottom = 471.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_o60gi")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -271.915
+offset_top = 120.0
+offset_right = 240.085
+offset_bottom = 184.0
+text = "retry"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 1136.08
+offset_top = 608.0
+offset_right = 1183.08
+offset_bottom = 639.0
+text = "quit"
