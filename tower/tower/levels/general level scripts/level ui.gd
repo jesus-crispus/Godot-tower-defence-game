@@ -1,8 +1,8 @@
 extends Control
+class_name UI
 
-
-@onready  var credits_label = $credits_label
-@onready  var health_label = $health_label
+@onready  var credits_label = %CreditsLabel
+@onready  var health_label = %HealthLabel
 
 var level_resourse: Resource
 signal game_over()

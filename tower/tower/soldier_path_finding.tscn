@@ -30,12 +30,14 @@ rotation = 3.14159
 shape = SubResource("CircleShape2D_s3q8p")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
+path_desired_distance = 32.0
+path_max_distance = 500.0
+path_postprocessing = 1
 avoidance_layers = 0
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 2.03
 autostart = true
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]

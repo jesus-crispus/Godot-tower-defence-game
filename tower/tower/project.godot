@@ -45,6 +45,7 @@ tower_1_hot_key={
 2d_physics/layer_4="Radar physics layer"
 2d_physics/layer_5="Projectile"
 2d_physics/layer_6="placement bloking"
+2d_physics/layer_7="ground"
 
 [rendering]
 

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_sle8n")
-credits = 1000
+credits = 200
 health = 100
 level_waves = 7
 curent_level_wave = 0
