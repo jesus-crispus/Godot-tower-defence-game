@@ -18,3 +18,4 @@ class_name Tower_data
 @export var damage: int
 @export var size: int
 @export var base_level_required: int
+@export var projectile_parent: String

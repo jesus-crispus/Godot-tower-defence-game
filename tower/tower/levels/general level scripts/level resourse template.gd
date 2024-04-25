@@ -10,4 +10,4 @@ class_name Level_resourse
 @export var curent_level_wave: int
 @export var money_maneger_reference: String
 @export var enemy_maneger_reference: String
-
+@export var projectile_parent: String

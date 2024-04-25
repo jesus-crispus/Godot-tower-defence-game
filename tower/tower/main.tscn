@@ -1,11 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6nuv32wlfaoi"]
+[gd_scene load_steps=7 format=3 uid="uid://b6nuv32wlfaoi"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cnmye"]
 [ext_resource type="PackedScene" uid="uid://di665p3dxwouq" path="res://levels/level_test.tscn" id="2_7ojip"]
+[ext_resource type="Script" path="res://game maneger.gd" id="2_53bpf"]
+[ext_resource type="Script" path="res://StartButton.gd" id="4_c8lho"]
+[ext_resource type="Script" path="res://CanvasLayer.gd" id="4_wkdkc"]
+[ext_resource type="Script" path="res://Button3.gd" id="5_fc0ar"]
 
 [node name="main" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_cnmye")
 
-[node name="game maneger" type="Node" parent="."]
+[node name="GameManeger" type="Node" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("2_53bpf")
 
-[node name="level test" parent="game maneger" instance=ExtResource("2_7ojip")]
+[node name="level test" parent="GameManeger" instance=ExtResource("2_7ojip")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+script = ExtResource("4_wkdkc")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+process_mode = 3
+z_index = 4
+offset_left = 736.0
+offset_top = 544.0
+offset_right = 992.0
+offset_bottom = 640.0
+text = "start"
+script = ExtResource("4_c8lho")
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 1856.0
+offset_right = 1917.0
+offset_bottom = 31.0
+text = "restart"
+script = ExtResource("5_fc0ar")
+
+[connection signal="button_up" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/Button2" to="CanvasLayer/Button2" method="_on_button_up"]

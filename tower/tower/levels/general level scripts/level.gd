@@ -1,13 +1,13 @@
 extends Node2D
 
 
-@export var level_resourse: Resource
-
+@onready var level_resourse: Resource = load("res://levels/level resourses/curent_level_resourse.tres")
+@export var level_resourse_data: Resource
 
 
 
 func _ready():
-	
+	_reset_level_resourse()
 	_give_data_to_children()
 	
 	
@@ -26,6 +26,11 @@ func _ready():
 	#level_resourse.money_maneger_reference = str(money_manager_id)
 	#level_resourse.enemy_maneger_reference = str(enemy_manager_id)
 #func find
+
+func _reset_level_resourse():
+	level_resourse.health = level_resourse_data.health
+	level_resourse.credits = level_resourse_data.credits
+	
 
 func _on_request_level_resourse(reciver):
 	reciver.level_resourse = level_resourse

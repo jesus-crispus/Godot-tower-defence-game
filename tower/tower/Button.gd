@@ -8,6 +8,7 @@ extends Button
 signal tower_1_button_pressed(tower_resource)
 func _ready():
 	text = "cr: " + str(Tower_data.cost)
+	Tower_data.projectile_parent = str(%ProjectileManege)
 
 
 func _unhandled_input(event):

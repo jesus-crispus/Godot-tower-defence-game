@@ -18,10 +18,10 @@ text = "Game Over"
 label_settings = SubResource("LabelSettings_o60gi")
 
 [node name="Button" type="Button" parent="."]
-offset_left = -271.915
-offset_top = 120.0
-offset_right = 240.085
-offset_bottom = 184.0
+offset_left = 880.0
+offset_top = 504.0
+offset_right = 1392.0
+offset_bottom = 568.0
 text = "retry"
 
 [node name="Button2" type="Button" parent="."]
@@ -30,3 +30,5 @@ offset_top = 608.0
 offset_right = 1183.08
 offset_bottom = 639.0
 text = "quit"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

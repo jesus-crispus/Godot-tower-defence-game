@@ -75,6 +75,7 @@ func coldown():
 func spawn_projectile():
 	var projectile_instance
 	projectile_instance = projectile.instantiate()
-	add_sibling(projectile_instance)
-	projectile_instance.position = position
-	projectile_instance.rotation = rotation
+	$"../../..".add_sibling(projectile_instance)
+	#projectile_instance.transform = self.transform
+	projectile_instance.position = self.global_position
+	projectile_instance.rotation = self.global_rotation
